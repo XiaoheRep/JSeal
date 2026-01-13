@@ -1,17 +1,28 @@
 package com.xiaohelab.jseal;
 
-//TIP 要<b>运行</b>代码，请按 <shortcut actionId="Run"/> 或
-// 点击装订区域中的 <icon src="AllIcons.Actions.Execute"/> 图标。
-public class Main {
-    public static void main(String[] args) {
-        //TIP 当文本光标位于高亮显示的文本处时按 <shortcut actionId="ShowIntentionActions"/>
-        // 查看 IntelliJ IDEA 建议如何修正。
-        System.out.printf("Hello and welcome!");
+import com.formdev.flatlaf.FlatLightLaf;
+import com.xiaohelab.jseal.ui.MainFrame; //导入主界面类
+import org.bouncycastle.jce.provider.BouncyCastleProvider; //导入BouncyCastle加密提供者包
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP 按 <shortcut actionId="Debug"/> 开始调试代码。我们已经设置了一个 <icon src="AllIcons.Debugger.Db_set_breakpoint"/> 断点
-            // 但您始终可以通过按 <shortcut actionId="ToggleLineBreakpoint"/> 添加更多断点。
-            System.out.println("i = " + i);
+import javax.swing.*; //导入Swing包
+import java.security.Security; //导入安全包
+
+public class Main{
+    public static void main(String[] args){
+        //注册BouncyCastle，以支持加密算法
+        Security.addProvider(new BouncyCastleProvider());
+
+        //设置FlatLaf主题
+        try{
+            FlatLightLaf.setup();
+        }catch(Exception e){
+            System.err.println("Failed to setup FlatLaf theme");
         }
+
+        //启动主界面
+        SwingUtilities.invokeLater(() -> {
+            MainFrame mainFrame = new MainFrame();
+            mainFrame.setVisible(true);
+        });
     }
 }
