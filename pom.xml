@@ -15,29 +15,37 @@
     </properties>
 
     <dependencies>
+        <!-- PDF处理 -->
         <dependency>
             <groupId>org.apache.pdfbox</groupId>
             <artifactId>pdfbox</artifactId>
             <version>2.0.35</version>
         </dependency>
 
+        <!-- 加密和签名 -->
         <dependency>
             <groupId>org.bouncycastle</groupId>
-            <artifactId>bcprov-jdk15to18</artifactId>
+            <artifactId>bcprov-jdk18on</artifactId>
+            <version>1.78.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.bouncycastle</groupId>
+            <artifactId>bcpkix-jdk18on</artifactId>
             <version>1.78.1</version>
         </dependency>
 
+        <!-- UI主题 -->
         <dependency>
             <groupId>com.formdev</groupId>
             <artifactId>flatlaf</artifactId>
             <version>3.7</version>
         </dependency>
 
+        <!-- JSON处理 -->
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>1.18.30</version>
-            <scope>provided</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.10.1</version>
         </dependency>
     </dependencies>
 
@@ -48,8 +56,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
+                    <release>21</release>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
